@@ -7,14 +7,12 @@ class AddContact extends React.Component{
         this.state = {
             name:"",
             email:"",  
-            errorMessage: ''
         };
       }
 
     
     add = (e) => {
         e.preventDefault();
-        this.setState({errorMessage: this.props.errorMessage});
         if(this.state.name === "" || this.state.email === ""){
             alert('All fields are mandatory!');
             return;
@@ -40,8 +38,8 @@ class AddContact extends React.Component{
                         value ={this.state.email}
                         onChange={ (e) => this.setState({ email: e.target.value })}
                         />
-                        { this.state.errorMessage && 
-                        <p className="ui error">{this.state.errorMessage}</p>
+                        { this.props.errorMessage && 
+                        <p className="ui error">{this.props.errorMessage}</p>
                         }
                     </div>
                     <button className="ui button blue">Add</button>
